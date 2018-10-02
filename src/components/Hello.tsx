@@ -25,11 +25,13 @@ const {name, enthusiasmLevel} = this.props;
             throw new Error('You could be a little more enthusiastic :D');
             
         }
-        return(<div>
-            Hello Component.....{name + getExclaimationMarks(this.state.currentEnthusiasmLevel)}
-        <button onClick={() => this.onDecrement()}>-</button>
-        <button onClick={() =>this.onIncrement()}>+</button>
-        </div>);
+        return(<div className="hello">
+        <div className="greeting">
+          Hello {name + getExclamationMarks(this.state.currentEnthusiasmLevel)}
+        </div>
+        <button onClick={this.onDecrement}>-</button>
+        <button onClick={this.onIncrement}>+</button>
+      </div>);
     }
     updateEnthusisasm(currentEnthusiasmLevel: number){
         this.setState({currentEnthusiasmLevel});
@@ -37,7 +39,7 @@ const {name, enthusiasmLevel} = this.props;
     
 }
 
-export function getExclaimationMarks(noOfTimes:number){
+export function getExclamationMarks(noOfTimes:number){
     return noOfTimes > 0 ? Array(noOfTimes + 1).join('!'):'!';
 }
 export default Hello
