@@ -3,6 +3,8 @@ import * as React from 'react';
 export interface IProps{
     name: string;
     enthusiasmLevel?: number;
+    onIncrement?: () => void;
+    onDecrement?: () => void;
 }
 
 export interface IState{
@@ -16,21 +18,21 @@ class Hello extends React.Component<IProps, IState> {
             currentEnthusiasmLevel: props.enthusiasmLevel || 1
         }
     }
-    onDecrement = () => {this.updateEnthusisasm(this.state.currentEnthusiasmLevel - 1)}
-    onIncrement = () => {this.updateEnthusisasm(this.state.currentEnthusiasmLevel + 1)}
+    // onDecrement = () => {this.updateEnthusisasm(this.state.currentEnthusiasmLevel - 1)}
+    // onIncrement = () => {this.updateEnthusisasm(this.state.currentEnthusiasmLevel + 1)}
     
     render(){
-const {name, enthusiasmLevel} = this.props;
+const {name, enthusiasmLevel, onIncrement, onDecrement} = this.props;
         if(enthusiasmLevel < 0 ){
             throw new Error('You could be a little more enthusiastic :D');
             
         }
         return(<div className="hello">
         <div className="greeting">
-          Hello {name + getExclamationMarks(this.state.currentEnthusiasmLevel)}
+          Hello {name + getExclamationMarks(enthusiasmLevel)}
         </div>
-        <button onClick={this.onDecrement}>-</button>
-        <button onClick={this.onIncrement}>+</button>
+        <button onClick={onDecrement}>-</button>
+        <button onClick={onIncrement}>+</button>
       </div>);
     }
     updateEnthusisasm(currentEnthusiasmLevel: number){
