@@ -4,6 +4,10 @@ import { StoreState } from '../models/index';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
+export function getContacts():any {
+  return fetch('contacts.json').then((res) => res.json())
+}
+
 export function mapStateToProps({ enthusiasmLevel, languageName }: StoreState) {
     return {
       enthusiasmLevel,

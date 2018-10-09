@@ -1,4 +1,6 @@
 import * as React from 'react';
+import ContactsApp from './Contacts/ContactsApp';
+
 
 export interface IProps{
     name: string;
@@ -18,6 +20,7 @@ class Hello extends React.Component<IProps, IState> {
             currentEnthusiasmLevel: props.enthusiasmLevel || 1
         }
     }
+    
     // onDecrement = () => {this.updateEnthusisasm(this.state.currentEnthusiasmLevel - 1)}
     // onIncrement = () => {this.updateEnthusisasm(this.state.currentEnthusiasmLevel + 1)}
     
@@ -27,7 +30,10 @@ const {name, enthusiasmLevel, onIncrement, onDecrement} = this.props;
             throw new Error('You could be a little more enthusiastic :D');
             
         }
+        
+
         return(<div className="hello">
+        <ContactsApp />
         <div className="greeting">
           Hello {name + getExclamationMarks(enthusiasmLevel)}
         </div>
